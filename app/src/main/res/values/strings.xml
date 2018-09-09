@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fan RecyclerView</string>
+    <string name="app_name">Movie Popular</string>
     <string name="api_key">Your Api Key</string>
     <string name="base_path_poster">https://image.tmdb.org/t/p/w500</string>
     <string name="foo">Lorem Ipsum</string>

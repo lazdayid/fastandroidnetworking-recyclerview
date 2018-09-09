@@ -17,15 +17,12 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    var baseUrl:String? = null
     val movies = ArrayList<Movie>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val key = getString(R.string.api_key)
-        baseUrl = "http://api.themoviedb.org/3/movie/popular?api_key=$key&language=en-US&page=1"
         getMovie()
 
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
@@ -38,8 +35,9 @@ class MainActivity : AppCompatActivity() {
 
         movies.clear()
         recyclerView.adapter = null
+        swipeRefresh.isRefreshing = true
 
-        AndroidNetworking.get(baseUrl)
+        AndroidNetworking.get("http://api.themoviedb.org/3/movie/popular?api_key=${getString(R.string.api_key)}&language=en-US&page=1")
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
@@ -52,12 +50,13 @@ class MainActivity : AppCompatActivity() {
                             Log.e("_kotlinTitle", jsonObject.optString("title"))
 
                             movies.add(
-                                    Movie(0, jsonObject.optString("title"), "")
+                                    Movie(jsonObject.getInt("id"), jsonObject.getString("title"),
+                                            jsonObject.getString("release_date"), jsonObject.getString("poster_path"))
                             )
 
                         }
 
-                        recyclerView.adapter = MainAdapter(movies)
+                        recyclerView.adapter = MainAdapter(this@MainActivity, movies)
                         swipeRefresh.isRefreshing = false
 
                     }

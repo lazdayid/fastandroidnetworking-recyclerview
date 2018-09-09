@@ -4,10 +4,39 @@
     android:padding="5dp">
 
     <TextView
-        android:id="@+id/txtTitle"
+        android:visibility="gone"
+        android:id="@+id/txtId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imgPoster"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_filter_hdr"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/foo"
-        android:padding="10dp"/>
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/imgPoster"
+        android:layout_margin="10dp"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/foo"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/foo"
+            android:textSize="12sp"
+            android:maxLength="4"
+            android:textColor="#999999"/>
+    </LinearLayout>
 
 </RelativeLayout>
