@@ -1,4 +1,4 @@
-package com.lazday.fanrecyclerview
+package com.lazday.fanrecyclerview.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +9,10 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import com.lazday.fanrecyclerview.R
 import com.lazday.fanrecyclerview.adapter.MainAdapter
-import com.lazday.fanrecyclerview.model.Movie
+import com.lazday.fanrecyclerview.data.Constant
+import com.lazday.fanrecyclerview.data.model.Movie
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import java.util.ArrayList
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = null
         swipeRefresh.isRefreshing = true
 
-        AndroidNetworking.get("http://api.themoviedb.org/3/movie/popular?api_key=${getString(R.string.api_key)}&language=en-US&page=1")
+        AndroidNetworking.get( "${Constant.tmdb_base_url}popular?tmdb_api_key=${Constant.tmdb_api_key}&language=en-US&page=1")
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {

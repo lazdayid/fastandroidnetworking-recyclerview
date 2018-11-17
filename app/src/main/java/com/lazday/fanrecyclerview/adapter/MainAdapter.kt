@@ -6,9 +6,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.lazday.fanrecyclerview.DetailActivity
+import com.lazday.fanrecyclerview.activity.DetailActivity
 import com.lazday.fanrecyclerview.R
-import com.lazday.fanrecyclerview.model.Movie
+import com.lazday.fanrecyclerview.data.Constant
+import com.lazday.fanrecyclerview.data.model.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_main.view.*
 import java.util.ArrayList
@@ -20,7 +21,7 @@ class MainAdapter(val context: Context, val movies: ArrayList<Movie>): RecyclerV
         holder.txtTitle.text = movies[position].title
         holder.txtDate.text = movies[position].release
         holder.txtDate.text = movies[position].release
-        Picasso.get().load(context.getString(R.string.base_path_poster) + movies[position].poster)
+        Picasso.get().load(Constant.tmdb_path_poster + movies[position].poster)
                 .placeholder(R.drawable.ic_filter_hdr)
                 .centerCrop().fit()
                 .into(holder.imgPoster)
