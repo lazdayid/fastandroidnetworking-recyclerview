@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/imgPoster"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_filter_hdr"/>
 
     <LinearLayout
@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/foo"
+            android:textSize="18sp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/txtDate"
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:text="@string/foo"
             android:textSize="12sp"
+            android:textStyle="italic"
             android:maxLength="4"
             android:textColor="#999999"/>
     </LinearLayout>

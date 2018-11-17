@@ -43,8 +43,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getDetail(movie_id:String){
-        Log.e("_logUrl", "${Constant.tmdb_base_url}$movie_id?tmdb_api_key=${Constant.tmdb_api_key}&language=en-US")
-        AndroidNetworking.get( "${Constant.tmdb_base_url}$movie_id?tmdb_api_key=${Constant.tmdb_api_key}&language=en-US")
+        AndroidNetworking.get( "${Constant.tmdb_base_url}$movie_id?api_key=${Constant.tmdb_api_key}&language=en-US")
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
@@ -70,7 +69,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getVideo(movie_id:String){
-        AndroidNetworking.get( "${Constant.tmdb_base_url}$movie_id/videos?tmdb_api_key=${Constant.tmdb_api_key}&language=en-US")
+        AndroidNetworking.get( "${Constant.tmdb_base_url}$movie_id/videos?api_key=${Constant.tmdb_api_key}&language=en-US")
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {

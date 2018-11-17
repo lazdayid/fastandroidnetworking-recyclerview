@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = null
         swipeRefresh.isRefreshing = true
 
-        AndroidNetworking.get( "${Constant.tmdb_base_url}popular?tmdb_api_key=${Constant.tmdb_api_key}&language=en-US&page=1")
+        AndroidNetworking.get( "${Constant.tmdb_base_url}popular?api_key=${Constant.tmdb_api_key}&language=en-US&page=1")
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
