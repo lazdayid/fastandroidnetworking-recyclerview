@@ -6,6 +6,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerSupportFragment
 import com.lazday.fanrecyclerview.R
+import com.lazday.fanrecyclerview.data.Constant
 
 class YoutubeActivity : AppCompatActivity(), YouTubePlayer.OnInitializedListener {
     override fun onInitializationSuccess(p0: YouTubePlayer.Provider?, p1: YouTubePlayer?, p2: Boolean) {
@@ -25,7 +26,7 @@ class YoutubeActivity : AppCompatActivity(), YouTubePlayer.OnInitializedListener
         bundle = intent.extras
 
         val frag = supportFragmentManager.findFragmentById(R.id.youtube_frag) as YouTubePlayerSupportFragment?
-        frag!!.initialize("AIzaSyBbLY_hn2_8KkfTbN4YFM7io6GyKw9EHr8", this)
+        frag!!.initialize(Constant.youtube_api_key, this)
 
         supportActionBar!!.title = bundle["NAME"].toString()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
