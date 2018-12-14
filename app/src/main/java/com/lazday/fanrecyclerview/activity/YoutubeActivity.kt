@@ -29,8 +29,6 @@ class YoutubeActivity : AppCompatActivity(), YouTubePlayer.OnInitializedListener
         val frag = supportFragmentManager.findFragmentById(R.id.youtube_frag) as YouTubePlayerSupportFragment?
         frag!!.initialize(Constant.youtube_api_key, this)
 
-        txtTitle.setText(bundle["NAME"].toString())
-
         supportActionBar!!.title = "Trailer"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }

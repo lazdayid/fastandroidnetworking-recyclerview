@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.DetailActivity" />
-        <activity android:name=".activity.YoutubeActivity"></activity>
+        <activity android:name=".activity.YoutubeActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
     </application>
 
 </manifest>
