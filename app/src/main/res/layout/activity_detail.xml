@@ -70,6 +70,17 @@
                     android:textSize="24sp"
                     android:textStyle="bold"/>
 
+                <TextView
+                    android:visibility="visible"
+                    android:id="@+id/txtNoData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtTrailers"
+                    android:layout_marginTop="16dp"
+                    android:text="No Trailers available"
+                    android:textStyle="italic"
+                    android:gravity="center"/>
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rcvVideo"
                     android:layout_width="match_parent"

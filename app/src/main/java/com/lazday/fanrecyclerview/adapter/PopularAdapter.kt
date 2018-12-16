@@ -11,7 +11,7 @@ import com.lazday.fanrecyclerview.activity.DetailActivity
 import com.lazday.fanrecyclerview.data.Constant
 import com.lazday.fanrecyclerview.data.model.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.adapter_main.view.*
+import kotlinx.android.synthetic.main.adapter_popular.view.*
 import java.util.ArrayList
 
 class PopularAdapter (val context: Context, val movies: ArrayList<Movie>): RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
@@ -19,11 +19,10 @@ class PopularAdapter (val context: Context, val movies: ArrayList<Movie>): Recyc
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txtId.text = movies[position].id.toString()
         holder.txtTitle.text = movies[position].title
-        holder.txtDate.text = movies[position].release
-        holder.txtDate.text = movies[position].release
+        holder.txtDate.text = "― " + movies[position].release
         Picasso.get().load(Constant.tmdb_path_poster + movies[position].poster)
                 .placeholder(R.drawable.ic_filter_hdr)
-                .centerCrop().fit()
+                .error(R.drawable.ic_filter_hdr)
                 .into(holder.imgPoster)
     }
 
