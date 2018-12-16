@@ -1,4 +1,4 @@
-# RecyclerView in Kotlin
+# RecyclerView with Kotlin
 Fast Android Networking working with Kotlin, RecyclerView and themoviedb Api
 
 # The first
