@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.LinearLayout
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
@@ -77,18 +79,27 @@ class DetailActivity : AppCompatActivity() {
                         Log.e("_kotlinResponse", response.toString())
 
                         val jsonArray = response.getJSONArray("results")
-                        for (i in 0 until jsonArray.length()) {
-                            val jsonObject = jsonArray.getJSONObject(i)
-                            Log.e("_logName", jsonObject.optString("name"))
+                        if (jsonArray.length() > 0){
 
-                            videos.add(
-                                    Video(jsonObject.getString("key"), jsonObject.getString("name"))
-                            )
+                            txtNoData.visibility = GONE
+                            rcvVideo.visibility = VISIBLE
 
+                            for (i in 0 until jsonArray.length()) {
+                                val jsonObject = jsonArray.getJSONObject(i)
+                                Log.e("_logName", jsonObject.optString("name"))
+
+                                videos.add(
+                                        Video(jsonObject.getString("key"), jsonObject.getString("name"))
+                                )
+
+                            }
+
+                            rcvVideo.adapter = DetailAdapter(this@DetailActivity, videos)
+                            rcvVideo.isLayoutFrozen = true
+                        } else {
+                            rcvVideo.visibility = GONE
+                            txtNoData.visibility = VISIBLE
                         }
-
-                        rcvVideo.adapter = DetailAdapter(this@DetailActivity, videos)
-                        rcvVideo.isLayoutFrozen = true
 
                     }
 
